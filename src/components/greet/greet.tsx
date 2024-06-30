@@ -1,4 +1,4 @@
-type GreetProps = { name?: string };
+import { GreetProps } from "./greet.types";
 
 const Greet = ({ name }: GreetProps) => {
   return <div>{`Hello, ${name}`}</div>;
