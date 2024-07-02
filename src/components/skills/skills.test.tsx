@@ -17,4 +17,20 @@ describe("Skills", () => {
     const liElements = screen.getAllByRole("listitem");
     expect(liElements).toHaveLength(skills.length);
   });
+
+  test("renders Login button", () => {
+    render(<Skills skills={skills} />);
+
+    const loginButton = screen.getByRole("button");
+    expect(loginButton).toBeInTheDocument();
+  });
+
+  test("Start Learning button is not rendered", () => {
+    render(<Skills skills={skills} />);
+
+    const startLearningButton = screen.queryByRole("button", {
+      name: "Start learning",
+    });
+    expect(startLearningButton).not.toBeInTheDocument();
+  });
 });
