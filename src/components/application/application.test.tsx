@@ -11,10 +11,18 @@ describe("Application", () => {
     const sectionHeading = screen.getByRole("heading", { level: 2 });
     expect(sectionHeading).toBeInTheDocument();
 
-    const paragraphElement = screen.getByText("All fields are mandatory", {
-      selector: "p",
+    const paragraphElement1 = screen.getByText("fields are mandatory", {
+      exact: false,
     });
-    expect(paragraphElement).toBeInTheDocument();
+    expect(paragraphElement1).toBeInTheDocument();
+
+    const paragraphElement2 = screen.getByText(/all fields are mandatory/i);
+    expect(paragraphElement2).toBeInTheDocument();
+
+    const paragraphElement3 = screen.getByText((content) =>
+      content.startsWith("All fields")
+    );
+    expect(paragraphElement3).toBeInTheDocument();
 
     const closeElement = screen.getByTitle("close");
     expect(closeElement).toBeInTheDocument();
