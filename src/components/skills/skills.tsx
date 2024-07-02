@@ -10,6 +10,7 @@ export const Skills = (props: SkillsProps) => {
       setIsLoggedIn(true);
     }, 1001);
   }, []);
+
   return (
     <>
       <ul>
